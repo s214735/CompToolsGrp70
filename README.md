@@ -1,1 +1,11 @@
-THIS IS A README FILE FOR GROUP 70 PROJECT IN 02807 Computational tools for data science, Fall 2025
+Goals of the task:
+
+Dataset: Amazon reviews
+
+- Similar items between different customers
+- Explore frequent items (words) in text reviews
+- Group items together using clustering algorithsm
+
+Final product: A recommendation
+
+Non-course method: Deep learning for feature extraction and recommendation of products
