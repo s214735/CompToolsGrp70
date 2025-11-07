@@ -210,5 +210,8 @@ __marimo__/
 .DS_Store
 *.tsv
 *.zip
-.env
 *.csv
+.env
+*.parquet
+*.pt
+data/
