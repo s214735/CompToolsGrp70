@@ -215,3 +215,4 @@ __marimo__/
 *.parquet
 *.pt
 data/
+.venv*/
