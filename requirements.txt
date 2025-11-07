@@ -6,3 +6,6 @@ seaborn
 jupyter
 surprise
 dotenv
+pytest
+torch
+tqdm
