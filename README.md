@@ -1,11 +1,13 @@
-Goals of the task:
+# Movie Recommendation System — Group 70
 
-Dataset: Amazon reviews
+02807 Computational Tools for Data Science — Fall 2025
 
-- Similar items between different customers
-- Explore frequent items (words) in text reviews
-- Group items together using clustering algorithsm
+## Short description
+This project implements a movie recommendation system using collaborative filtering techniques. The system analyzes user ratings and preferences to suggest movies that users may enjoy based on their past interactions.
 
-Final product: A recommendation
+## Project Structure
+- `data/`: Contains datasets used for training and testing the recommendation system.
+- `notebooks/`: Main notebook to run all functionalities of the project.
+- `src/`: Functions for plotting and models.
 
-Non-course method: Deep learning for feature extraction and recommendation of products
+GitHub repo: https://github.com/s214735/CompToolsGrp70

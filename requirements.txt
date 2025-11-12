@@ -5,4 +5,7 @@ matplotlib
 seaborn
 jupyter
 surprise
-dotenv
+python-dotenv
+datasketch
+scipy
+tqdm
