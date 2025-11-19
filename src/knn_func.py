@@ -376,7 +376,7 @@ def compute_metric_latent_knn(ratings_csv, movies_csv, model_path, latents_path)
 
     eligible_user_ids = list(user_pos_info.keys())
 
-    MAX_USERS = 1000
+    MAX_USERS = 100000
     eval_user_ids = rng.choice(eligible_user_ids, size=min(MAX_USERS, len(eligible_user_ids)), replace=False)
 
     TOP_K_NEIGHBORS = 30
