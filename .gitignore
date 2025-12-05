@@ -210,10 +210,11 @@ __marimo__/
 .DS_Store
 *.tsv
 *.zip
-*.csv
 .env
 *.parquet
 *.pt
 data/
 .venv*/
 .vscode/*
+
+ratings.csv
