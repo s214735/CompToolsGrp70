@@ -213,7 +213,6 @@ __marimo__/
 .env
 *.parquet
 *.pt
-data/
 .venv*/
 .vscode/*
 
