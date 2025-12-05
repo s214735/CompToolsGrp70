@@ -97,8 +97,16 @@ def build_profile_sets(
     
 ):
     """
-    Build profile sets (genres, positive users, negative users)
-    by unioning information from a list of movies.
+    Collect multiple movies to build a profile
+    Input:
+        movie_ids       : movie ids to build profile from
+        df_movies       : df movies
+        movie_genres    : df genres
+        movie_users_pos : df pos reviews
+        movie_users_neg : df neg reviews
+        use_genre       : bool
+        use_user_pos    : bool
+        use_user_neg    : bool
     """
     profile_genres = set()
     profile_users_pos = set()
@@ -123,6 +131,11 @@ def build_lsh_tokens_from_sets(
 ) -> set:
     """
     Convert genre / user sets into the token format used by LSH.
+
+    input:
+        genres      : set of genre strings
+        users_pos   : set of pos users
+        users_neg   : set of neg users
     """
     tokens = set()
     for g in genres:
@@ -142,6 +155,12 @@ def profile_minhash_from_sets(
     """
     Build a MinHash signature for a profile defined by
     (genres, users_pos, users_neg) sets.
+
+    input:
+        genres      : set of genre strings
+        users_pos   : set of pos users
+        users_neg   : set of neg users
+        num_perm    : number of permutations for MinHash
     """
     tokens = build_lsh_tokens_from_sets(genres, users_pos, users_neg)
     m = MinHash(num_perm=num_perm)
@@ -165,6 +184,18 @@ def similar_movies_for_profile(
     Recommend movies for a 'virtual user' whose taste is defined
     by a list of liked movie_ids, using a single LSH index and
     a combined (genre + user likes/dislikes) similarity.
+
+    input:
+        movie_ids       : list of movie ids defining the profile
+        lsh_index       : MinHashLSH index
+        movies_df       : df movies
+        movie_genres    : df genres
+        movie_users_pos : df pos reviews
+        movie_users_neg : df neg reviews
+        top_k           : number of recommendations to return
+        use_genre       : bool
+        use_user_pos    : bool
+        use_user_neg    : bool
     """
     # 1) Build profile sets (genres, pos users, neg users)
     g_prof, up_prof, un_prof = build_profile_sets(
@@ -229,6 +260,23 @@ def validate(ratings_eval,
              MIN_RATING_SCORE = 4.0,
              MIN_AMOUNT_MOVIE_OVER_THRESHOLD = 20,
              MAX_USERS_TO_EVAL = 100):
+    """
+    Validation of LSH-based recommendation system
+
+    Input:
+        ratings_eval           : pd.DataFrame
+        lsh_index              : lsh index
+        movies_df              : movies_df
+        movie_genres           : movie_genres
+        movie_users_pos        : movie_users_pos
+        movie_users_neg        : movie_users_neg
+        RNG_SEED               : random seed
+        TOP_K_EVAL             : number of top-K recommendations to consider for hits
+        MASK_USER_MOVIES       : number of movies to mask per user during eval
+        MIN_RATING_SCORE       : minimum rating score to consider a rating as "positive"
+        MIN_AMOUNT_MOVIE_OVER_THRESHOLD : minimum number of positive movies a user must have to be eligible for evaluation
+        MAX_USERS_TO_EVAL      : max users to evaluate
+    """
     
     rng = np.random.RandomState(RNG_SEED)
     
