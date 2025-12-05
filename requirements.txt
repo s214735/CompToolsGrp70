@@ -1,11 +1,12 @@
-pandas
 numpy
+pandas
+torch
 scikit-learn
 matplotlib
 seaborn
-jupyter
-surprise
-python-dotenv
-datasketch
 scipy
 tqdm
+datasketch
+surprise
+python-dotenv
+jupyter
